@@ -6,7 +6,7 @@ const getColumns = (selectedCurrency) => {
   const sign = getCurrencySign(selectedCurrency);
   return [
     {
-        accessorFn: (row) => cryptoReader.marketCapRank(row) || '-',
+        accessorFn: (row) => <span style={{ paddingLeft: '1.6rem' }} >{cryptoReader.marketCapRank(row) || '-'}</span>,
         header: 'Rank',
     },
     {
