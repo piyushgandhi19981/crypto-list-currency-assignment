@@ -1,0 +1,92 @@
+.react-table-container {
+  margin: var(--spacing-large) 0;
+  border-radius: 1rem;
+  box-shadow: 0 0.4rem 2rem rgba(0, 0, 0, 0.15);
+  background: linear-gradient(120deg, var(--secondary-color), var(--primary-color));
+  padding: var(--spacing-small);
+}
+
+.table-header{
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+  height: 5.6rem;
+}
+
+.fancy-table {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100vh - 27.2rem);
+  overflow: hidden;
+  border-collapse: collapse;
+  font-family: "Poppins", sans-serif;
+  text-align: left;
+  background-color: white;
+}
+
+table {
+  width: var(--table-width);
+  border-collapse: collapse;
+}
+
+.fancy-table thead th {
+  background: linear-gradient(120deg, var(--primary-color), var(--secondary-color));
+  color: white;
+  font-weight: bold;
+  padding: var(--spacing-base);
+  text-transform: uppercase;
+  font-size: var(--font-small);
+  border-bottom: 0.2rem solid #dedede;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.fancy-table tbody tr {
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.fancy-table tbody tr:hover {
+  background-color: rgba(102, 166, 255, 0.1);
+  transform: scale(1.02);
+  cursor: pointer;
+}
+
+.fancy-table td {
+  padding: var(--spacing-base);
+  border-bottom: 0.1rem solid #f0f0f0;
+  color: var(--text-secondary);
+  font-size: var(--font-base);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-1rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 120rem) {
+  .fancy-table {
+    font-size: var(--font-small);
+  }
+
+  .fancy-table thead th,
+  .fancy-table td {
+    padding: var(--spacing-small);
+  }
+}
+
+tbody{
+  display: block;
+  overflow-y: auto;
+}
+
+tbody tr {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+}

@@ -1,0 +1,28 @@
+export const CURRENCIES = [
+  { id: 'usd', sign: '$', name: 'US Dollar' },
+  { id: 'eur', sign: '€', name: 'Euro' },
+  { id: 'gbp', sign: '£', name: 'British Pound' },
+  { id: 'inr', sign: '₹', name: 'Indian Rupee' },
+  { id: 'jpy', sign: '¥', name: 'Japanese Yen' },
+  { id: 'aud', sign: 'A$', name: 'Australian Dollar' },
+  { id: 'cad', sign: 'C$', name: 'Canadian Dollar' },
+  { id: 'chf', sign: 'CHF', name: 'Swiss Franc' },
+  { id: 'cny', sign: '¥', name: 'Chinese Yuan' },
+  { id: 'sek', sign: 'kr', name: 'Swedish Krona' },
+  { id: 'nzd', sign: 'NZ$', name: 'New Zealand Dollar' },
+  { id: 'mxn', sign: 'MX$', name: 'Mexican Peso' },
+  { id: 'sgd', sign: 'S$', name: 'Singapore Dollar' },
+  { id: 'hkd', sign: 'HK$', name: 'Hong Kong Dollar' },
+  { id: 'nok', sign: 'kr', name: 'Norwegian Krone' },
+  { id: 'krw', sign: '₩', name: 'South Korean Won' },
+  { id: 'try', sign: '₺', name: 'Turkish Lira' },
+  { id: 'rub', sign: '₽', name: 'Russian Ruble' },
+  { id: 'zar', sign: 'R', name: 'South African Rand' },
+  { id: 'brl', sign: 'R$', name: 'Brazilian Real' },
+  { id: 'myr', sign: 'RM', name: 'Malaysian Ringgit' },
+  { id: 'php', sign: '₱', name: 'Philippine Peso' },
+  { id: 'thb', sign: '฿', name: 'Thai Baht' },
+  { id: 'pln', sign: 'zł', name: 'Polish Zloty' },
+];
+
+export const DEFAULT_CURRENCY = CURRENCIES[0];

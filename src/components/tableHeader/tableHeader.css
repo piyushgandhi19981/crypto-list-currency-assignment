@@ -1,0 +1,44 @@
+.header-container {
+  background-color: var(--primary-color);
+  color: #fff;
+  padding: var(--spacing-small) var(--spacing-base);
+  text-align: center;
+  position: relative;
+  animation: slideIn 1s ease-out;
+  height: 6.4rem;
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateY(-3rem);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.header-title {
+  font-size: var(--font-large);
+  font-weight: bold;
+  margin: 0;
+  animation: fadeIn 1s ease-out;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.header-subtitle {
+  font-size: var(--font-small);
+  color: var(--text-secondary);
+  margin-top: 0.8rem;
+  font-style: italic;
+  animation: fadeIn 1s 0.5s ease-out;
+}
