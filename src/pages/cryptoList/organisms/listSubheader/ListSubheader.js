@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import _noop from "lodash/noop";
 
 import _identity from "lodash/identity";
-import _reverse from "lodash/reverse";
 import _map from "lodash/map";
 
 import Autocomplete from "react-autocomplete";
@@ -89,7 +88,7 @@ const ListSubheader = ({
       <div className="subheader-right">
         <Autocomplete
           getItemValue={_identity}
-          items={_reverse(autocompleteItems)}
+          items={autocompleteItems}
           renderItem={renderAutocompleteItem}
           value={search}
           onChange={onAutoCompleteChange}
