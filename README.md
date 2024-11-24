@@ -14,7 +14,7 @@
 * Data caching is implemented for 15 minutes to reduce API calls after the cache expires.
 * The crypto list details are stored in IndexedDB, while selectedCurrency and recentSearches are stored in localStorage to demonstrate different storage methods.
 * Test cases have been written for multiple files to ensure application stability.
-* The application is deployed on Vercel: https://crypto-list-currency-assignment-ss83.vercel.app/
+* The application is deployed on Vercel: https://crypto-list-currency-assignment-g7j9.vercel.app/
 * Local Code Recording: https://drive.google.com/file/d/1b3EG9bKsKlYUi81sU1qs8wfbJuabxWXI/view?usp=sharing
 * Application Walkthrough Recording: https://drive.google.com/file/d/1idNeTTibAgz-zIqq5bkgT-U7_GLYUyQW/view?usp=sharing
 * Test Cases: https://drive.google.com/file/d/1-Rf0mCkN931yhEqbBbwi7h0dhTp8YcG9/view?usp=sharing
