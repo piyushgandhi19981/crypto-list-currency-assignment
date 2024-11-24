@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import CryptoList from '../cryptoList';
 import CryptoDetailsPage from "../cryptoDetails";
 
-function App() {
+function BaseApp() {
   return (
     <Router>
       <Routes>
@@ -14,4 +14,4 @@ function App() {
   );
 }
 
-export default App;
+export default BaseApp;

@@ -8,7 +8,14 @@ import Pagination from "../pagination";
 
 import { TABLE_ACTION_TYPES } from "./tableManager.constants";
 
-const TableManager = ({ data, tableProps, pageProps, onAction, headerProps, renderSubheader }) => {
+const TableManager = ({ 
+  data = [],
+  tableProps = {},
+  pageProps = {},
+  onAction = _noop,
+  headerProps = {},
+  renderSubheader = null
+ }) => {
 
   useEffect(() => {
     onAction({ type: TABLE_ACTION_TYPES.ON_INIT });
@@ -39,15 +46,6 @@ TableManager.propTypes = {
   onAction: PropTypes.func,
   headerProps: PropTypes.object,
   renderSubheader: PropTypes.func
-}
-
-TableManager.defaultProps = {
-  tableProps: {},
-  data: [],
-  pageProps: {},
-  onAction: _noop,
-  headerProps: {},
-  renderSubheader: null
 }
 
 export default TableManager;

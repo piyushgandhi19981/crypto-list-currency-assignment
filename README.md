@@ -1,3 +1,26 @@
+# App Info
+
+* Created a Crypto List Details application using React.js. The application starts with the list screen.
+* By default, 50 items are displayed on the first page. Users can change the page number and the number of rows displayed.
+* Using the currency filter, users can switch currencies and view data in the selected currency.
+* A search box allows users to search by the name or symbol of a cryptocurrency entity.
+* The search box includes an autocomplete feature showing the last 10 recent searches.
+* The total results are displayed on the right side of the currency filter for better clarity.
+* Key details are displayed on the list screen. Clicking on a row redirects users to the details page for the selected cryptocurrency.
+* The details page displays all relevant information about the selected cryptocurrency, including details in the chosen currency.
+* Toaster notifications are used to display success and error messages.
+* The application is responsive, with CSS rules added for smaller screen widths. Sizes are defined in rem units to improve accessibility.
+* The codebase is optimized with configurable and reusable components for maintainability.
+* Data caching is implemented for 15 minutes to reduce API calls after the cache expires.
+* The crypto list details are stored in IndexedDB, while selectedCurrency and recentSearches are stored in localStorage to demonstrate different storage methods.
+* Test cases have been written for multiple files to ensure application stability.
+* The application is deployed on Vercel: https://crypto-list-currency-assignment-ss83.vercel.app/
+* Local Code Recording: https://drive.google.com/file/d/1b3EG9bKsKlYUi81sU1qs8wfbJuabxWXI/view?usp=sharing
+* Application Walkthrough Recording: https://drive.google.com/file/d/1idNeTTibAgz-zIqq5bkgT-U7_GLYUyQW/view?usp=sharing
+* Test Cases: https://drive.google.com/file/d/1-Rf0mCkN931yhEqbBbwi7h0dhTp8YcG9/view?usp=sharing
+
+Create React App Details
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

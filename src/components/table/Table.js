@@ -9,7 +9,12 @@ import {
 import "./table.css";
 import Loader from "../loader";
 
-const Table = ({ columns, data, isLoading, onRowClick }) => {
+const Table = ({ 
+  columns = [],
+  data = [],
+  isLoading = true,
+  onRowClick = _noop
+}) => {
 
   const table = useReactTable({
     data,
@@ -35,7 +40,7 @@ const Table = ({ columns, data, isLoading, onRowClick }) => {
         </thead>
         {isLoading ? <Loader /> : <tbody>
           {_map(table.getRowModel().rows, (row) => (
-            <tr onClick={() => onRowClick(row?.original)} key={row.id}>
+            <tr role="row" onClick={() => onRowClick(row?.original)} key={row.id}>
               {_map(row.getVisibleCells(), (cell) => (
                 <td key={cell.id}>{cell.getContext().renderValue()}</td>
               ))}
@@ -52,13 +57,6 @@ Table.propTypes = {
   data: PropTypes.array,
   isLoading: PropTypes.bool,
   onRowClick: PropTypes.func
-}
-
-Table.defaultProps = {
-  columns: [],
-  data: [],
-  onRowClick: _noop,
-  isLoading: true
 }
 
 export default Table;

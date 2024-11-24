@@ -1,13 +1,18 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
-import _noop from 'lodash/noop';
-import _map from 'lodash/map';
+import _noop from "lodash/noop";
+import _map from "lodash/map";
 
-import './pagination.css'; 
+import "./pagination.css";
 
-const Pagination = ({ totalItems, onPageUpdate, pageSizeOptions, page: currentPage, rows: currentSize }) => {
-
+const Pagination = ({
+  totalItems = 0,
+  onPageUpdate = _noop,
+  page: currentPage = 1,
+  rows: currentSize = 50,
+  pageSizeOptions = [25, 50, 100],
+}) => {
   const totalPages = Math.ceil(totalItems / currentSize);
 
   const handlePageChange = (page) => {
@@ -18,7 +23,7 @@ const Pagination = ({ totalItems, onPageUpdate, pageSizeOptions, page: currentPa
 
   const handleSizeChange = (event) => {
     const size = parseInt(event.target.value);
-    onPageUpdate({ page: 1, rows: size })
+    onPageUpdate({ page: 1, rows: size });
   };
 
   const pages = Array.from({ length: totalPages }, (_, index) => index + 1);
@@ -26,24 +31,27 @@ const Pagination = ({ totalItems, onPageUpdate, pageSizeOptions, page: currentPa
   return (
     <div className="pagination-container">
       <div className="pagination-controls">
-        <button 
-          className="pagination-button" 
-          onClick={() => handlePageChange(currentPage - 1)} 
-          disabled={currentPage === 1}>
+        <button
+          className="pagination-button"
+          onClick={() => handlePageChange(currentPage - 1)}
+          disabled={currentPage === 1}
+        >
           &lt; Prev
         </button>
-        {pages.map((page) => (
+        {_map(pages, (page) => (
           <button
             key={page}
-            className={`pagination-page ${page === currentPage ? 'active' : ''}`}
-            onClick={() => handlePageChange(page)}>
+            className={`pagination-page ${page === currentPage ? "active" : ""}`}
+            onClick={() => handlePageChange(page)}
+          >
             {page}
           </button>
         ))}
-        <button 
-          className="pagination-button" 
-          onClick={() => handlePageChange(currentPage + 1)} 
-          disabled={currentPage === totalPages}>
+        <button
+          className="pagination-button"
+          onClick={() => handlePageChange(currentPage + 1)}
+          disabled={currentPage === totalPages}
+        >
           Next &gt;
         </button>
       </div>
@@ -56,10 +64,10 @@ const Pagination = ({ totalItems, onPageUpdate, pageSizeOptions, page: currentPa
           onChange={handleSizeChange}
           className="pagination-size-dropdown"
         >
-          {_map(pageSizeOptions, pageSize => (
-            <>
-              <option value={pageSize}>{pageSize}</option>
-            </>
+          {_map(pageSizeOptions, (pageSize, index) => (
+            <option key={index} value={pageSize}>
+              {pageSize}
+            </option>
           ))}
         </select>
       </div>
@@ -72,15 +80,7 @@ Pagination.propTypes = {
   rows: PropTypes.number,
   page: PropTypes.number,
   onPageUpdate: PropTypes.func,
-  pageSizeOptions: PropTypes.array
-};
-
-Pagination.defaultProps = {
-  totalItems: 0,
-  onPageUpdate: _noop,
-  page: 1,
-  rows: 50,
-  pageSizeOptions: [25, 50, 100]
+  pageSizeOptions: PropTypes.array,
 };
 
 export default Pagination;

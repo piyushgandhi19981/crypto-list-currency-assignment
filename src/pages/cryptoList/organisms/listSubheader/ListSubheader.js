@@ -1,29 +1,28 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
-import PropTypes from 'prop-types';
-import _noop from 'lodash/noop';
+import React, { useEffect, useMemo, useRef, useState } from "react";
+import PropTypes from "prop-types";
+import _noop from "lodash/noop";
 
-import _identity from 'lodash/identity';
-import _reverse from 'lodash/reverse';
-import _map from 'lodash/map';
+import _identity from "lodash/identity";
+import _reverse from "lodash/reverse";
+import _map from "lodash/map";
 
-import Autocomplete from 'react-autocomplete';
+import Autocomplete from "react-autocomplete";
 
-import { CURRENCIES } from '../../../../constants/currencies';
+import { CURRENCIES } from "../../../../constants/currencies";
 
-import { getAutocompleteItems } from './listSubheader.helpers';
-import { INPUT_PROPS } from './listSubheader.constants';
+import { getAutocompleteItems } from "./listSubheader.helpers";
+import { INPUT_PROPS } from "./listSubheader.constants";
 
-import './listSubheader.css';
+import "./listSubheader.css";
 
-const ListSubheader = ({ 
-  onCurrencyChange,
-  totalResults,
-  onSearchChange,
-  searchText,
-  recentSearches,
-  selectedCurrency 
+const ListSubheader = ({
+  onCurrencyChange = _noop,
+  totalResults = 0,
+  onSearchChange = _noop,
+  searchText = "",
+  recentSearches = [],
+  selectedCurrency,
 }) => {
-
   const ref = useRef(null);
 
   const [search, setSearch] = useState(searchText);
@@ -31,31 +30,37 @@ const ListSubheader = ({
   useEffect(() => {
     return () => {
       ref.current = null;
-    }
+    };
   }, []);
 
-  const autocompleteItems = useMemo(() => getAutocompleteItems(searchText, recentSearches), [searchText, recentSearches]);
+  const autocompleteItems = useMemo(
+    () => getAutocompleteItems(searchText, recentSearches),
+    [searchText, recentSearches],
+  );
 
   const handleSearchChange = (val) => {
     clearTimeout(ref.current);
     ref.current = setTimeout(() => {
-      onSearchChange(val)
+      onSearchChange(val);
     }, 500);
   };
 
-  const onAutoCompleteChange = e => {
+  const onAutoCompleteChange = (e) => {
     const val = e.target.value;
     setSearch(val);
     handleSearchChange(val);
   };
 
-  const onSelect = val => {
+  const onSelect = (val) => {
     setSearch(val);
     onSearchChange(val);
   };
 
   const renderAutocompleteItem = (item) => (
-    <div key={item} className={`autocomplete-item ${item === searchText ? 'active' : ''}`}>
+    <div
+      key={item}
+      className={`autocomplete-item ${item === searchText ? "active" : ""}`}
+    >
       {item}
     </div>
   );
@@ -64,18 +69,19 @@ const ListSubheader = ({
     <div className="subheader">
       <div className="subheader-left">
         <select
+          data-testid="currency-select"
           className="currency-filter"
-          onChange={e => onCurrencyChange(e.target.value)}
+          onChange={(e) => onCurrencyChange(e.target.value)}
           value={selectedCurrency}
         >
-          {_map(CURRENCIES, currency => (
+          {_map(CURRENCIES, (currency) => (
             <option key={currency.id} value={currency.id}>
               {currency.name}
             </option>
           ))}
         </select>
-        
-        <span className="result-count">
+
+        <span data-testid="result-count" className="result-count">
           Total Results: {totalResults}
         </span>
       </div>
@@ -89,6 +95,7 @@ const ListSubheader = ({
           onChange={onAutoCompleteChange}
           inputProps={INPUT_PROPS}
           onSelect={onSelect}
+          data-testid="autocomplete"
         />
       </div>
     </div>
@@ -101,15 +108,7 @@ ListSubheader.propTypes = {
   onSearchChange: PropTypes.func,
   searchText: PropTypes.string,
   recentSearches: PropTypes.array,
-  selectedCurrency: PropTypes.string.isRequired
-};
-
-ListSubheader.defaultProps = {
-  onCurrencyChange: _noop,
-  totalResults: 0, 
-  onSearchChange: _noop,
-  searchText: '',
-  recentSearches: [],
+  selectedCurrency: PropTypes.string.isRequired,
 };
 
 export default ListSubheader;
